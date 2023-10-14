@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -15.53,
+      "left": 145.5,
+      "attrs": { "temperature": "21.2" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -54.4,
+      "left": -210.4,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "h163.2", "v192" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "h19.2", "v172.4" ] ],
+    [ "ldr1:AO", "esp:D34", "green", [ "h9.6", "v56.9" ] ]
+  ],
+  "dependencies": {}
+}
